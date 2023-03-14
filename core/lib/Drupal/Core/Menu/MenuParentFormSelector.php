@@ -160,7 +160,10 @@ class MenuParentFormSelector implements MenuParentFormSelectorInterface {
 
       $link = $element->link;
       if ($link->getPluginId() != $exclude) {
-        $title = $indent . ' ' . Unicode::truncate($link->getTitle(), 30, TRUE, FALSE);
+        $title = $indent . ' ';
+        if (!empty($link->getTitle())) {
+         $title .= Unicode::truncate($link->getTitle(), 30, TRUE, FALSE);
+        }
         if (!$link->isEnabled()) {
           $title .= ' (' . $this->t('disabled') . ')';
         }
